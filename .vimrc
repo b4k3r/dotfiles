@@ -145,3 +145,5 @@ set tags=./tags;
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 let g:easytags_auto_highlight = 0
+
+set lazyredraw
