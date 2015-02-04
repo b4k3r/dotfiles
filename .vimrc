@@ -38,6 +38,7 @@ NeoBundle 'xolox/vim-easytags'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
+NeoBundle 'mileszs/ack.vim'
 
 call neobundle#end()
 
