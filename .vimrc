@@ -2,6 +2,7 @@ if has('vim_starting')
   set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim/
   set rtp+=$GOROOT/misc/vim
+  runtime macros/matchit.vim
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
