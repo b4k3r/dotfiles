@@ -39,6 +39,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
 
 call neobundle#end()
 
