@@ -1,5 +1,3 @@
-alias progin='cd /var/www/~prokopm'
-
 alias agi='sudo apt-get install'
 alias agr='sudo apt-get --purge autoremove'
 alias agu='sudo apt-get update'
@@ -21,3 +19,5 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias s='sudo'
+
+alias gt='git status'
