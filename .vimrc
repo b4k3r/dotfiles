@@ -18,9 +18,8 @@ NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'junegunn/vim-easy-align'
@@ -150,3 +149,6 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:easytags_auto_highlight = 0
 
 set lazyredraw
+
+let g:ycm_key_list_select_completion = ['<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-k>']
