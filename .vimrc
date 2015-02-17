@@ -39,6 +39,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 call neobundle#end()
 
