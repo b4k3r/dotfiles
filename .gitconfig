@@ -1,0 +1,9 @@
+[user]
+  email = marcin@prokop.co
+  name = Marcin Prokop
+[push]
+  default = simple
+[alias]
+  co = checkout
+  ci = commit
+  br = branch
