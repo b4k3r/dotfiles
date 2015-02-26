@@ -14,3 +14,4 @@ alias s='sudo'
 
 alias gt='git status -bs'
 alias gu='git fetch --quiet --prune --all -t'
+alias gb='git branch -a'
