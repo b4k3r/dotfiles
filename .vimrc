@@ -40,6 +40,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'edkolev/tmuxline.vim'
 
 call neobundle#end()
 
@@ -73,7 +74,6 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " Colors
 set term=screen-256color
-set term=xterm-256color
 set t_Co=256
 set background=dark
 colorscheme jellybeans
