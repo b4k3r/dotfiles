@@ -41,6 +41,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'MattesGroeger/vim-bookmarks'
 
 call neobundle#end()
 
