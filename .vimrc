@@ -81,6 +81,11 @@ let base16colorspace=256
 colorscheme base16-railscasts
 
 highlight clear SignColumn
+highlight GitGutterAdd          ctermbg=236
+highlight GitGutterChange       ctermbg=236
+highlight GitGutterDelete       ctermbg=236
+highlight GitGutterChangeDelete ctermbg=236
+
 highlight VertSplit    ctermbg=236
 highlight ColorColumn  ctermbg=237
 highlight LineNr       ctermbg=236 ctermfg=240
@@ -158,3 +163,5 @@ let g:ycm_key_list_select_completion = ['<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+set colorcolumn=120
