@@ -29,7 +29,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'xolox/vim-misc'
@@ -77,7 +77,23 @@ map <Leader>a :call RunAllSpecs()<CR>
 set term=screen-256color
 set t_Co=256
 set background=dark
-colorscheme jellybeans
+let base16colorspace=256
+colorscheme base16-railscasts
+
+highlight clear SignColumn
+highlight VertSplit    ctermbg=236
+highlight ColorColumn  ctermbg=237
+highlight LineNr       ctermbg=236 ctermfg=240
+highlight CursorLineNr ctermbg=236 ctermfg=240
+highlight CursorLine   ctermbg=236
+highlight StatusLineNC ctermbg=238 ctermfg=0
+highlight StatusLine   ctermbg=240 ctermfg=12
+highlight IncSearch    ctermbg=3   ctermfg=1
+highlight Search       ctermbg=1   ctermfg=3
+highlight Visual       ctermbg=3   ctermfg=0
+highlight Pmenu        ctermbg=240 ctermfg=12
+highlight PmenuSel     ctermbg=3   ctermfg=1
+highlight SpellBad     ctermbg=0   ctermfg=1
 
 " Paste from cliboard
 set clipboard=unnamed,unnamedplus
@@ -125,9 +141,6 @@ let g:neocomplete#enable_at_startup = 1
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-
-set colorcolumn=120
-hi ColorColumn guibg=#202020 ctermbg=234
 
 " vim-airline conf
 let g:airline_powerline_fonts = 1
