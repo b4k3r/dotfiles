@@ -38,6 +38,8 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'benmills/vimux'
 
 call neobundle#end()
 
@@ -161,3 +163,10 @@ let g:ycm_key_list_previous_completion = ['<C-k>']
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 set colorcolumn=120
+
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vx :VimuxInterruptRunner<CR>
+map <Leader>vz :call VimuxZoomRunner()<CR>
