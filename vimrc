@@ -17,7 +17,6 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'junegunn/vim-easy-align'
@@ -156,9 +155,6 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:easytags_auto_highlight = 0
 
 set lazyredraw
-
-let g:ycm_key_list_select_completion = ['<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-k>']
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
