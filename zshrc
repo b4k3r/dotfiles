@@ -1,7 +1,7 @@
 export ZSH=/home/b4k3r/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-plugins=(git rails ruby rvm bundler)
+plugins=(git rails ruby rvm bundler vi-mode)
 
 export PATH="/home/b4k3r/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/b4k3r/.rvm/bin"
 
