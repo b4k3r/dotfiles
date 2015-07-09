@@ -39,6 +39,8 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'benmills/vimux'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'ervandew/supertab'
 
 call neobundle#end()
 
