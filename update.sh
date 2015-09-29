@@ -12,6 +12,8 @@ rm ~/.update.sh ~/.install.sh
 
 echo "Updating plugins ..."
 vim +NeoBundleUpdate +qall
+cd ~/.vim/bundle/YouCompleteMe
+./install.py
 
 echo "Updating base16 ..."
 cd ~/.config/base16-shell && git pull

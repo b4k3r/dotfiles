@@ -16,6 +16,8 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 
 echo "Installing plugins ...."
 vim +NeoBundleInstall +qall
+cd ~/.vim/bundle/YouCompleteMe
+./install.py
 
 echo "Installing base16 ..."
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
