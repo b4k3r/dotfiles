@@ -139,7 +139,7 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-let g:neocomplete#enable_at_startup = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
