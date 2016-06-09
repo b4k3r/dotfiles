@@ -1,19 +1,18 @@
 export ZSH=/home/b4k3r/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-plugins=(git rails ruby rvm bundler vi-mode)
+plugins=(git rails ruby rvm bundler)
 
-export PATH="/home/b4k3r/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/b4k3r/.rvm/bin"
+export PATH="/home/b4k3r/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 source $ZSH/oh-my-zsh.sh
 
-BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 source ~/.bash_aliases
 
-export GOPATH=$HOME/.go
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
+
+export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'

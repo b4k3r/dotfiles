@@ -1,51 +1,59 @@
 if has('vim_starting')
   set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
   set rtp+=$GOROOT/misc/vim
   runtime macros/matchit.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call plug#begin('~/.vim/plugged')
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rvm'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'thoughtbot/vim-rspec'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'Keithbsmiley/rspec.vim'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'maksimr/vim-jsbeautify'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-easytags'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'benmills/vimux'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'Valloric/YouCompleteMe'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rvm'
+Plug 'tpope/vim-rails'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tomtom/tcomment_vim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'airblade/vim-gitgutter'
+Plug 'Keithbsmiley/rspec.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/syntastic'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'elixir-lang/vim-elixir'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
 
-call neobundle#end()
+" JavaScript staff
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+if exists("g:plugs['yajs.vim']")
+  Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
+endif
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mustache/vim-mustache-handlebars'
+
+call plug#end()
 
 filetype plugin indent on
-
-NeoBundleCheck
 
 syntax enable
 set encoding=utf-8
@@ -75,28 +83,8 @@ map <Leader>a :call RunAllSpecs()<CR>
 set term=screen-256color
 set t_Co=256
 set background=dark
-let base16colorspace=256
-colorscheme base16-railscasts
-
-highlight clear SignColumn
-highlight GitGutterAdd          ctermbg=236
-highlight GitGutterChange       ctermbg=236
-highlight GitGutterDelete       ctermbg=236
-highlight GitGutterChangeDelete ctermbg=236
-
-highlight VertSplit    ctermbg=236
-highlight ColorColumn  ctermbg=237
-highlight LineNr       ctermbg=236 ctermfg=240
-highlight CursorLineNr ctermbg=236 ctermfg=240
-highlight CursorLine   ctermbg=236
-highlight StatusLineNC ctermbg=238 ctermfg=0
-highlight StatusLine   ctermbg=240 ctermfg=12
-highlight IncSearch    ctermbg=3   ctermfg=1
-highlight Search       ctermbg=1   ctermfg=3
-highlight Visual       ctermbg=3   ctermfg=0
-highlight Pmenu        ctermbg=240 ctermfg=12
-highlight PmenuSel     ctermbg=3   ctermfg=1
-highlight SpellBad     ctermbg=0   ctermfg=1
+let g:seoul256_background = 236
+colo seoul256
 
 " Paste from cliboard
 set clipboard=unnamed,unnamedplus
@@ -124,13 +112,6 @@ set listchars=tab:>-,trail:~
 vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 
-map <c-f> :call JsBeautify()<cr>
-" or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd BufWritePre * :%s/\s\+$//e
 
 augroup CursorLine
@@ -148,10 +129,10 @@ let g:rubycomplete_rails = 1
 " vim-airline conf
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'zenburn'
 
-set tags=./tags;
-
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_ruby_checkers = ['mri']
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:easytags_auto_highlight = 0
 
