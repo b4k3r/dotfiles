@@ -86,6 +86,8 @@ set background=dark
 let g:seoul256_background = 236
 colo seoul256
 
+hi VertSplit ctermbg=NONE guibg=NONE cterm=none
+
 " Paste from cliboard
 set clipboard=unnamed,unnamedplus
 
