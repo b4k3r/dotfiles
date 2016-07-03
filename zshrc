@@ -16,3 +16,5 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 
 export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
+
+export KEYTIMEOUT=1
