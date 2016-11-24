@@ -13,7 +13,7 @@ rm ~/.install.sh ~/.update.sh
 
 echo "Installing dependencies ..."
 sudo apt-get -qq update
-sudo apt-get install -yq zsh build-essential cmake ack-grep vim-gtk ctags python-dev python3-dev >/dev/null 2>&1
+sudo apt-get install -yq zsh build-essential cmake ack-grep ctags python-dev python3-dev >/dev/null 2>&1
 
 echo "Installing vim-plug ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
