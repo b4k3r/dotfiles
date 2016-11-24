@@ -6,7 +6,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-ruby/vim-ruby'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rvm'
 Plug 'tpope/vim-rails'
 Plug 'kien/ctrlp.vim'
@@ -25,8 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -34,22 +33,13 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'elixir-lang/vim-elixir'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'ajh17/VimCompletesMe'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
-Plug 'nanotech/jellybeans.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
-
-" JavaScript staff
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-if exists("g:plugs['yajs.vim']")
-  Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
-endif
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-unimpaired'
+Plug 'neomake/neomake'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -99,10 +89,8 @@ set guioptions-=L  "remove left-hand scroll baret guioptions-=T
 set relativenumber
 set number
 
-" Disable backup
-set nobackup
-set nowritebackup
-set noswapfile
+set directory=$HOME/.vim/swapfiles//
+set backupdir=$HOME/.vim/backup//
 
 nnoremap <C-S-t> :tabnew<CR>
 inoremap <C-S-t> <Esc>:tabnew<CR>
@@ -152,3 +140,5 @@ map <Leader>vx :VimuxInterruptRunner<CR>
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
 set timeoutlen=1000 ttimeoutlen=0
+
+autocmd! BufWritePost * Neomake
