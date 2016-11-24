@@ -39,7 +39,6 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'neomake/neomake'
-Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -110,8 +109,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-let g:ycm_collect_identifiers_from_tags_files = 1
-
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -123,8 +120,6 @@ let g:airline_theme = 'zenburn'
 
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_javascript_checkers = ['eslint']
-
-let g:easytags_auto_highlight = 0
 
 set lazyredraw
 
