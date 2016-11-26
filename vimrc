@@ -119,7 +119,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'zenburn'
 
 let g:syntastic_ruby_checkers = ['mri']
-let g:syntastic_javascript_checkers = ['eslint']
 
 set lazyredraw
 
