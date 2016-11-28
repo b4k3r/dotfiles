@@ -33,7 +33,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'elixir-lang/vim-elixir'
-Plug 'ajh17/VimCompletesMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'junegunn/seoul256.vim'
@@ -136,3 +136,5 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 set timeoutlen=1000 ttimeoutlen=0
 
 autocmd! BufWritePost * Neomake
+
+let g:ycm_collect_identifiers_from_tags_files = 1
