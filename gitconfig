@@ -7,3 +7,5 @@
   co = checkout
   ci = commit
   br = branch
+[core]
+	excludesfile = /home/b4k3r/.gitignore_global
