@@ -8,4 +8,5 @@
   ci = commit
   br = branch
 [core]
-	excludesfile = /home/b4k3r/.gitignore_global
+	excludesfile = /Users/b4k3r/.gitignore_global
+	editor = /usr/local/bin/vim

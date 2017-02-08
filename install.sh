@@ -1,9 +1,7 @@
 #!/bin/bash
 
 echo "Coping files ..."
-mkdir ~/.fonts
-mkdir -p ~/.config/{fontconfig/conf.d,gtk-3.0}
-mkdir -p ~/.vim/{macros,after/ftplugin}
+mkdir -p ~/.vim/macros
 
 for item in `git ls-files` ; do
   ln -sf ~/dotfiles/$item ~/.$item
@@ -11,9 +9,20 @@ done
 
 rm ~/.install.sh ~/.update.sh
 
+echo "Installing Homebrew ..."
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 echo "Installing dependencies ..."
-sudo apt-get -qq update
-sudo apt-get install -yq zsh build-essential cmake ack-grep ctags python-dev python3-dev >/dev/null 2>&1
+brew install zsh git cmake ack ctags tmux gpg
+
+echo "Installing RVM .."
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable
+
+echo "Installing Powerline fonts"
+mkdir /tmp/fonts && git clone git@github.com:powerline/fonts.git /tmp/fonts
+cd /tmp/fonts && ./install.sh
+cd ~/dotfiles && rm /tmp/fonts
 
 echo "Installing vim-plug ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
