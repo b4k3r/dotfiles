@@ -78,7 +78,7 @@ colo seoul256
 hi VertSplit ctermbg=NONE guibg=NONE cterm=none
 
 " Paste from cliboard
-" set clipboard+=unnamed
+set clipboard+=unnamed
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar

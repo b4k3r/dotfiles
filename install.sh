@@ -13,7 +13,7 @@ echo "Installing Homebrew ..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing dependencies ..."
-brew install zsh git cmake ack ctags tmux gpg
+brew install zsh git cmake ack ctags tmux gpg reattach-to-user-namespace
 brew install macvim --with-override-system-vim
 
 echo "Installing RVM .."
