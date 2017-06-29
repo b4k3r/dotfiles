@@ -31,7 +31,6 @@ Plug 'mileszs/ack.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
 Plug 'elixir-lang/vim-elixir'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'jiangmiao/auto-pairs'
@@ -39,6 +38,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'neomake/neomake'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -95,7 +95,7 @@ nnoremap <C-S-t> :tabnew<CR>
 inoremap <C-S-t> <Esc>:tabnew<CR>
 inoremap <C-S-w> <Esc>:tabclose<CR>
 
-set list
+" set list
 set listchars=tab:>-,trail:~
 
 vmap <Enter> <Plug>(EasyAlign)
@@ -138,3 +138,8 @@ set timeoutlen=1000 ttimeoutlen=0
 autocmd! BufWritePost * Neomake
 
 let g:ycm_collect_identifiers_from_tags_files = 1
+
+let g:vimtex_compiler_latexmk = {'callback' : 0}
+
+au BufReadPost *.tex setlocal spell spelllang=pl,en
+au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell spelllang=pl,en
