@@ -1,25 +1,31 @@
-export ZSH=/home/b4k3r/.oh-my-zsh
+export ZSH="/home/b4k3r/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
-plugins=(git rails ruby rvm bundler)
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+plugins=(git ruby rvm bundler)
 
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 source $ZSH/oh-my-zsh.sh
 
-source ~/.bash_aliases
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
-
 export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
-
 export KEYTIMEOUT=1
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# Aliases
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+alias agi='sudo apt-get install'
+alias agr='sudo apt-get --purge autoremove'
+alias agu='sudo apt-get update'
+alias agug='agu && sudo apt-get upgrade'
+alias acs='apt-cache search'
+
+alias rm='rm -rf'
+alias s='sudo'
+
+alias gt='git status -bs'
+alias gu='git fetch --prune --all -t'
+alias gb='git branch -a'
+alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
+
+alias tmux="TERM=xterm-256color tmux"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

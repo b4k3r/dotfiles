@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo "Updating files ..."
-git pull origin master
+git pull
 
 echo "Coping files ..."
 for item in `git ls-files` ; do
@@ -12,5 +12,6 @@ rm ~/.update.sh ~/.install.sh
 
 echo "Updating plugins ..."
 vim +PlugUpdate
+vim +PlugClean
 
 echo "Done!"

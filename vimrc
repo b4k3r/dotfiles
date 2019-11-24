@@ -1,44 +1,31 @@
 if has('vim_starting')
   set nocompatible
-  set rtp+=$GOROOT/misc/vim
-  runtime macros/matchit.vim
 endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-rvm'
+Plug 'morhetz/gruvbox'
+
 Plug 'tpope/vim-rails'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tomtom/tcomment_vim'
-Plug 'thoughtbot/vim-rspec'
 Plug 'airblade/vim-gitgutter'
-Plug 'Keithbsmiley/rspec.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/syntastic'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-bundler'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'xolox/vim-misc'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'tpope/vim-fugitive'
-Plug 'mileszs/ack.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'elixir-lang/vim-elixir'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'neomake/neomake'
-Plug 'lervag/vimtex'
+Plug 'mileszs/ack.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -62,18 +49,11 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-" Rspec
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 " Colors
-set term=screen-256color
 set t_Co=256
 set background=dark
-let g:seoul256_background = 236
-colo seoul256
+colo gruvbox
 
 hi VertSplit ctermbg=NONE guibg=NONE cterm=none
 
@@ -115,31 +95,19 @@ let g:rubycomplete_rails = 1
 
 " vim-airline conf
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'zenburn'
-
-let g:syntastic_ruby_checkers = ['mri']
+let g:airline_extensions = []
+let g:airline_theme = 'gruvbox'
 
 set lazyredraw
+set ttyfast
+set re=1
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 set colorcolumn=120
 
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
-map <Leader>vq :VimuxCloseRunner<CR>
-map <Leader>vx :VimuxInterruptRunner<CR>
-map <Leader>vz :call VimuxZoomRunner()<CR>
-
-set timeoutlen=1000 ttimeoutlen=0
-
-autocmd! BufWritePost * Neomake
-
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-let g:vimtex_compiler_latexmk = {'callback' : 0}
-
 au BufReadPost *.tex setlocal spell spelllang=pl,en
+au BufReadPost *.md setlocal spell spelllang=en
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell spelllang=pl,en
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
