@@ -2,7 +2,7 @@ export ZSH="/home/b4k3r/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git ruby rvm bundler)
+plugins=(git ruby rvm bundler docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -27,5 +27,5 @@ alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=fo
 
 alias tmux="TERM=xterm-256color tmux"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Add RVM and Golang
+export PATH="$PATH:$HOME/.rvm/bin:/usr/local/go/bin"

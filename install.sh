@@ -12,6 +12,9 @@ sudo apt-get install -yq git \
                          cmake \
                          ack-grep \
                          ctags \
+                         tmux \
+                         gnupg2 \
+                         tig \
                          python-dev \
                          python-pip \
                          python3-dev \
@@ -34,6 +37,29 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo "Installing plugins ...."
 vim +PlugInstall
+
+echo "Installing Docker ..."
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository -u \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get install -yq docker-ce docker-ce-cli containerd.io >/dev/null 2>&1
+sudo usermod -aG docker $USER
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+echo "Installing RVM ..."
+gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+echo "Installing Heroku CLI ..."
+sudo snap install --classic heroku
+
+echo "Installing Golang ..."
+wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz -P /tmp
+sudo tar -C /usr/local -xzf /tmp/go1.13.4.linux-amd64.tar.gz
+mkdir -p ~/go
 
 echo "Installing zsh ..."
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
