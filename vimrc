@@ -6,13 +6,16 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
 
+Plug 'lervag/vimtex'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
@@ -107,7 +110,9 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 set colorcolumn=120
 
 au BufReadPost *.tex setlocal spell spelllang=pl,en
-au BufReadPost *.md setlocal spell spelllang=en
+au BufReadPost *.md setlocal spell spelllang=pl,en
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell spelllang=pl,en
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+set tags=./.tags;
