@@ -19,7 +19,7 @@ sudo apt-get install -yq git \
                          python-pip \
                          python3-dev \
                          python3-pip >/dev/null 2>&1
-curl -sL install-node.now.sh/lts | sudo bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
 echo "Coping files ..."
 mkdir ~/.fonts
@@ -57,8 +57,8 @@ echo "Installing Heroku CLI ..."
 sudo snap install --classic heroku
 
 echo "Installing Golang ..."
-wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz -P /tmp
-sudo tar -C /usr/local -xzf /tmp/go1.13.4.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz -P /tmp
+sudo tar -C /usr/local -xzf /tmp/go1.13.8.linux-amd64.tar.gz
 mkdir -p ~/go
 
 echo "Installing zsh ..."
