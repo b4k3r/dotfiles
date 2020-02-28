@@ -57,8 +57,8 @@ echo "Installing Heroku CLI ..."
 sudo snap install --classic heroku
 
 echo "Installing Golang ..."
-wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz -P /tmp
-sudo tar -C /usr/local -xzf /tmp/go1.13.4.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz -P /tmp
+sudo tar -C /usr/local -xzf /tmp/go1.14.linux-amd64.tar.gz
 mkdir -p ~/go
 
 echo "Installing zsh ..."
