@@ -31,6 +31,14 @@ for item in `git ls-files` ; do
 done
 rm ~/.install.sh ~/.update.sh
 
+echo "Installin FZF ..."
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+echo "Installin fd finder ..."
+wget https://github.com/sharkdp/fd/releases/download/v7.5.0/fd_7.5.0_amd64.deb -P /tmp
+sudo dpkg -i /tmp/fd_7.5.0_amd64.deb
+
 echo "Installing vim-plug ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

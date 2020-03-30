@@ -11,7 +11,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
@@ -26,7 +27,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
-Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
@@ -105,14 +105,12 @@ set lazyredraw
 set ttyfast
 set re=1
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
 set colorcolumn=120
+
+nnoremap <c-p> :Files<cr>
 
 au BufReadPost *.tex setlocal spell spelllang=pl,en
 au BufReadPost *.md setlocal spell spelllang=pl,en
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell spelllang=pl,en
-
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set tags=./.tags;
