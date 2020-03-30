@@ -10,6 +10,7 @@ Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -28,7 +29,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
