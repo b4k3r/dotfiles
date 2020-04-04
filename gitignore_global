@@ -39,3 +39,6 @@ Thumbs.db
 # Others #
 ######################
 tags
+tags.lock
+.tags
+.tags.lock

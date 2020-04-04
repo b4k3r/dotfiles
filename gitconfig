@@ -1,12 +1,14 @@
 [user]
-  email = marcin@prokop.co
-  name = Marcin Prokop
+	email = marcin@prokop.co
+	name = Marcin Prokop
 [push]
-  default = simple
+	default = simple
 [alias]
-  co = checkout
-  ci = commit
-  br = branch
+	co = checkout
+	ci = commit
+	br = branch
 [core]
 	excludesfile = /Users/b4k3r/.gitignore_global
-	editor = /usr/local/bin/vim
+	editor = /usr/local/bin/nvim
+[commit]
+	gpgsign = true
