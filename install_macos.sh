@@ -5,7 +5,7 @@ for item in `git ls-files` ; do
   ln -sf ~/dotfiles/$item ~/.$item
 done
 
-rm ~/.install_macos.sh ~/.update_macos.sh
+rm ~/.install_*.sh ~/.update.sh
 
 echo "Installing Homebrew ..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -50,5 +50,6 @@ echo "Installing zsh ..."
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ln -sf ~/dotfiles/zshrc ~/.zshrc
 chsh -s /bin/zsh
+$(brew --prefix)/opt/fzf/install
 
 echo "Done!"
