@@ -14,6 +14,7 @@ sudo apt-get install -yq git \
                          ctags \
                          tmux \
                          gnupg2 \
+                         scdaemon \
                          tig \
                          python-dev \
                          python-pip \
@@ -73,5 +74,7 @@ echo "Installing zsh ..."
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ln -sf ~/dotfiles/zshrc ~/.zshrc
 chsh -s /bin/zsh
+
+echo "enable-ssh-support \npinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
 
 echo "Done!"
