@@ -9,7 +9,10 @@ export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 export GOPATH=$HOME/go
 
 export KEYTIMEOUT=1
-export GPG_TTY=$(tty)
+
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpg-connect-agent updatestartuptty /bye > /dev/null
 
 alias gt='git status -bs'
 alias gu='git fetch --prune --all -t'
