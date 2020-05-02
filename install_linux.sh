@@ -17,7 +17,7 @@ sudo dnf -y install nodejs \
                  tig \
                  tmux \
                  yubioath-desktop \
-                 java-11-openjdk \
+                 java-11-openjdk-devel \
                  util-linux-user \
                  grubby \
                  wireshark \
@@ -33,7 +33,7 @@ sudo systemctl enable docker
 
 echo "Installing Maven ..."
 wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
-sudo tar -C /opt -xzf apache-maven-3.6.3-bin.tar.gz
+sudo tar -C /opt -xzf /tmp/apache-maven-3.6.3-bin.tar.gz
 
 echo "Installing Golang ..."
 wget https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz -P /tmp
