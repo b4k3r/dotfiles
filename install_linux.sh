@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Installing dependencies ..."
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager \
     --add-repo \
