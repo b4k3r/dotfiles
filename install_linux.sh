@@ -8,6 +8,7 @@ sudo dnf config-manager \
     https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf -y install nodejs \
                  zsh \
+                 vim \
                  neovim \
                  python3-neovim \
                  the_silver_searcher \
