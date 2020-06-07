@@ -2,11 +2,8 @@
 
 echo "Installing dependencies ..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager \
-    --add-repo \
-    https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf -y install nodejs \
+sudo dnf -y install dnf-plugins-core \
+                 nodejs \
                  zsh \
                  vim \
                  neovim \
@@ -14,24 +11,19 @@ sudo dnf -y install nodejs \
                  the_silver_searcher \
                  fd-find \
                  ack \
-                 nodejs \
-                 ctags \
                  tig \
-                 tmux \
                  yubioath-desktop \
                  java-11-openjdk-devel \
                  util-linux-user \
-                 grubby \
                  wireshark \
-                 docker-ce docker-ce-cli containerd.io
+                 docker
 sudo usermod -aG docker,wireshark $USER
 sudo alternatives --config java
 
 # https://fedoraproject.org/wiki/Common_F31_bugs#Other_software_issues
 sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
 
-sudo systemctl start docker
-sudo systemctl enable docker
+sudo systemctl enable --now docker
 
 echo "Installing Maven ..."
 wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
@@ -41,9 +33,6 @@ echo "Installing Golang ..."
 wget https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz -P /tmp
 sudo tar -C /usr/local -xzf /tmp/go1.13.10.linux-amd64.tar.gz
 mkdir -p ~/go
-
-echo "Installing Heroku CLI ..."
-curl https://cli-assets.heroku.com/install.sh | sh
 
 echo "Coping files ..."
 mkdir ~/.fonts
