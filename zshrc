@@ -21,11 +21,13 @@ alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=fo
 
 alias tmux="TERM=xterm-256color tmux"
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
- source ~/.linux.zsh
-elif [[ "$OSTYPE" == "darwin"* ]]; then
- source ~/.macos.zsh
-fi
+# Add RVM, Golang and Maven
+export PATH="$PATH:$HOME/.rvm/bin:/usr/local/go/bin:/opt/apache-maven-3.6.3/bin:$HOME/go/bin"
+
+# Aliases
+alias vim='nvim'
+alias rm='rm -rf'
+alias s='sudo'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type file'

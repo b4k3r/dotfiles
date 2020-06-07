@@ -53,7 +53,7 @@ mkdir -p ~/.vim/{swapfiles,backup}
 for item in `git ls-files` ; do
   ln -sf ~/dotfiles/$item ~/.$item
 done
-rm ~/.install_*.sh ~/.update.sh
+rm ~/.install.sh ~/.update.sh
 
 echo "Installin FZF ..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
