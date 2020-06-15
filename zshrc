@@ -1,13 +1,11 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-plugins=(git ruby rvm bundler docker-compose)
+plugins=(git ruby rvm bundler docker-compose vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
-export GOPATH=$HOME/go
-
 export KEYTIMEOUT=1
 
 export GPG_TTY="$(tty)"
@@ -21,8 +19,8 @@ alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=fo
 
 alias tmux="TERM=xterm-256color tmux"
 
-# Add RVM, Golang and Maven
-export PATH="$PATH:$HOME/.rvm/bin:/usr/local/go/bin:/opt/apache-maven-3.6.3/bin:$HOME/go/bin"
+# Add RVM and Maven
+export PATH="$PATH:$HOME/.rvm/bin:/opt/apache-maven-3.6.3/bin"
 
 # Aliases
 alias vim='nvim'

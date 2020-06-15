@@ -6,6 +6,7 @@ sudo dnf -y install dnf-plugins-core \
                  nodejs \
                  zsh \
                  vim \
+                 golang \
                  neovim \
                  python3-neovim \
                  the_silver_searcher \
@@ -16,7 +17,7 @@ sudo dnf -y install dnf-plugins-core \
                  java-11-openjdk-devel \
                  util-linux-user \
                  wireshark \
-                 docker
+                 docker docker-compose
 sudo usermod -aG docker,wireshark $USER
 sudo alternatives --config java
 
@@ -28,11 +29,6 @@ sudo systemctl enable --now docker
 echo "Installing Maven ..."
 wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
 sudo tar -C /opt -xzf /tmp/apache-maven-3.6.3-bin.tar.gz
-
-echo "Installing Golang ..."
-wget https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz -P /tmp
-sudo tar -C /usr/local -xzf /tmp/go1.13.10.linux-amd64.tar.gz
-mkdir -p ~/go
 
 echo "Coping files ..."
 mkdir ~/.fonts
@@ -54,10 +50,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo "Installing plugins ...."
 nvim +PlugInstall
-
-echo "Installing Docker Compose ..."
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
 
 echo "Installing RVM ..."
 gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
