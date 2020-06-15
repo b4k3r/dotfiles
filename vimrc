@@ -70,7 +70,6 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll baret guioptions-=T
 
-set relativenumber
 set number
 
 set directory=$HOME/.vim/swapfiles//
