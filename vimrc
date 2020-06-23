@@ -30,7 +30,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -136,8 +135,3 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-
