@@ -11,6 +11,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'lervag/vimtex'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -135,3 +136,5 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
+
+let g:vimtex_quickfix_latexlog = {'default' : 0}
