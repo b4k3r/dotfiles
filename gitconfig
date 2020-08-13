@@ -9,6 +9,6 @@
 	br = branch
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = nvim
+	editor = vim
 [commit]
 	gpgsign = true

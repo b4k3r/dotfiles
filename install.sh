@@ -7,8 +7,6 @@ sudo dnf -y install dnf-plugins-core \
                  zsh \
                  vim \
                  golang \
-                 neovim \
-                 python3-neovim \
                  the_silver_searcher \
                  fd-find \
                  ack \
@@ -32,7 +30,7 @@ sudo tar -C /opt -xzf /tmp/apache-maven-3.6.3-bin.tar.gz
 
 echo "Coping files ..."
 mkdir ~/.fonts
-mkdir -p ~/.config/{fontconfig/conf.d,nvim}
+mkdir -p ~/.config/fontconfig/conf.d
 mkdir -p ~/.vim/{swapfiles,backup}
 
 for item in `git ls-files` ; do
