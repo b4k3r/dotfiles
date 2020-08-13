@@ -31,6 +31,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
@@ -138,3 +139,6 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 
 let g:vimtex_quickfix_latexlog = {'default' : 0}
+
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
