@@ -23,6 +23,7 @@ alias tmux="TERM=xterm-256color tmux"
 export PATH="$PATH:$HOME/.rvm/bin:/opt/apache-maven-3.6.3/bin"
 
 # Aliases
+alias vim='gvim -v'
 alias rm='rm -rf'
 alias s='sudo'
 
