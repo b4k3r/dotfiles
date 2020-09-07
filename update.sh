@@ -13,7 +13,7 @@ echo "Updating fzf ..."
 cd ~/.fzf && git pull && ./install
 
 echo "Updating plugins ..."
-nvim +PlugClean
-nvim +PlugUpdate
+vim +PlugClean
+vim +PlugUpdate
 
 echo "Done!"

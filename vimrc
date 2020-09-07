@@ -12,6 +12,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lervag/vimtex'
+Plug 'jparise/vim-graphql'
+Plug 'hashivim/vim-terraform'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -31,7 +33,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 call plug#end()
 
@@ -143,3 +145,6 @@ let g:vimtex_quickfix_latexlog = {'default' : 0}
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
