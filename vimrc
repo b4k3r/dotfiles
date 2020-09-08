@@ -75,6 +75,8 @@ set guioptions-=L  "remove left-hand scroll baret guioptions-=T
 
 set number
 
+set nofoldenable
+
 set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backup//
 

@@ -7,6 +7,10 @@ sudo dnf -y install dnf-plugins-core \
                  zsh \
                  vim \
                  golang \
+                 cmake \
+                 gcc-c++ \
+                 make \
+                 python3-devel \
                  the_silver_searcher \
                  fd-find \
                  ack \
