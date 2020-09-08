@@ -1,5 +1,7 @@
 #!/bin/bash
 
+TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+
 echo "Installing dependencies ..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf -y install dnf-plugins-core \
@@ -31,6 +33,12 @@ sudo systemctl enable --now docker
 echo "Installing Maven ..."
 wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
 sudo tar -C /opt -xzf /tmp/apache-maven-3.6.3-bin.tar.gz
+
+echo "Installing Terraform ${TER_VER}..."
+wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp
+unzip /tmp/terraform_${TER_VER}_linux_amd64.zip
+sudo mv /tmp/terraform /usr/local/bin/
+sudo chmod +x /usr/local/bin/terraform
 
 echo "Coping files ..."
 mkdir ~/.fonts
