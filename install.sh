@@ -37,8 +37,9 @@ sudo tar -C /opt -xzf /tmp/apache-maven-3.6.3-bin.tar.gz
 echo "Installing Terraform ${TER_VER}..."
 wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp
 unzip /tmp/terraform_${TER_VER}_linux_amd64.zip
-sudo mv /tmp/terraform /usr/local/bin/
+sudo mv ./terraform /usr/local/bin/
 sudo chmod +x /usr/local/bin/terraform
+sudo rm /tmp/terraform_${TER_VER}_linux_amd64.zip
 
 echo "Coping files ..."
 mkdir ~/.fonts
