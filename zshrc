@@ -19,8 +19,8 @@ alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=fo
 
 alias tmux="TERM=xterm-256color tmux"
 
-# Add RVM and Maven
-export PATH="$PATH:$HOME/.rvm/bin:/opt/apache-maven-3.6.3/bin"
+# Add RVM
+export PATH="$PATH:$HOME/.rvm/bin"
 
 # Aliases
 alias vim='gvim -v'

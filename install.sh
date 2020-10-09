@@ -1,38 +1,46 @@
 #!/bin/bash
 
+COMPOSE_VER=`curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+FD_VER=`curl -s https://api.github.com/repos/sharkdp/fd/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 
 echo "Installing dependencies ..."
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo dnf -y install dnf-plugins-core \
-                 nodejs \
-                 zsh \
-                 vim \
-                 golang \
-                 cmake \
-                 gcc-c++ \
-                 make \
-                 python3-devel \
-                 the_silver_searcher \
-                 fd-find \
-                 ack \
-                 tig \
-                 yubioath-desktop \
-                 java-11-openjdk-devel \
-                 util-linux-user \
-                 wireshark \
-                 docker docker-compose
-sudo usermod -aG docker,wireshark $USER
-sudo alternatives --config java
+# Youbikey
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 32CBA1A9
+sudo add-apt-repository ppa:yubico/stable
 
-# https://fedoraproject.org/wiki/Common_F31_bugs#Other_software_issues
-sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+# Insync
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
+sudo add-apt-repository "deb http://apt.insync.io/ubuntu focal non-free contrib"
 
-sudo systemctl enable --now docker
+# Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-echo "Installing Maven ..."
-wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
-sudo tar -C /opt -xzf /tmp/apache-maven-3.6.3-bin.tar.gz
+sudo apt -qq update
+sudo apt install -yq git \
+                         silversearcher-ag \
+                         neovim \
+                         zsh \
+                         build-essential \
+                         cmake \
+                         ack-grep \
+                         ctags \
+                         tmux \
+                         docker-ce docker-ce-cli containerd.io \
+                         vim vim-gtk3 \
+                         insync \
+                         tig \
+                         yubioath-desktop \
+                         python3-dev \
+                         python3-pip
+sudo usermod -aG docker $USER
+
+echo "Installing Node ..."
+sudo snap install node --channel=12/stable --classic
+
+echo "Installing Golang ..."
+sudo snap install go --channel=1.15/stable --classic
 
 echo "Installing Terraform ${TER_VER}..."
 wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp
@@ -55,12 +63,20 @@ echo "Installin FZF ..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+echo "Installin fd finder ${FD_VER} ..."
+wget https://github.com/sharkdp/fd/releases/download/v${FD_VER}/fd_${FD_VER}_amd64.deb -P /tmp
+sudo dpkg -i /tmp/fd_${FD_VER}_amd64.deb
+
 echo "Installing vim-plug ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Installing plugins ...."
-nvim +PlugInstall
+vim +PlugInstall
+
+echo "Installing Docker Compose ${COMPOSE_VER} ..."
+sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 echo "Installing RVM ..."
 gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
