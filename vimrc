@@ -12,7 +12,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lervag/vimtex'
-Plug 'jparise/vim-graphql'
 Plug 'hashivim/vim-terraform'
 
 Plug 'junegunn/fzf'
@@ -57,9 +56,9 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-
 " Colors
 set t_Co=256
+let g:gruvbox_contrast_dark = "soft"
 set background=dark
 colo gruvbox
 
@@ -110,8 +109,6 @@ set re=1
 
 set colorcolumn=120
 
-nnoremap <c-p> :Files<cr>
-
 au BufReadPost *.tex setlocal spell spelllang=pl,en
 au BufReadPost *.md setlocal spell spelllang=pl,en
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell spelllang=pl,en
@@ -150,3 +147,18 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+" FZF related stuff
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <leader><leader> :Commands<CR>
+nnoremap <C-p> :call FzfOmniFiles()<CR>
+
+fun! FzfOmniFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GitFiles
+  endif
+endfun
