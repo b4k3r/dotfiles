@@ -1,8 +1,13 @@
 #!/bin/bash
 
-COMPOSE_VER=`curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-FD_VER=`curl -s https://api.github.com/repos/sharkdp/fd/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+function latest_tag () {
+  curl -s https://api.github.com/repos/$1/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'
+}
+
+COMPOSE_VER=$(latest_tag 'docker/compose')
+FD_VER=$(latest_tag 'sharkdp/fd')
+SIMPLENOTE_VER=$(latest_tag 'Automattic/simplenote-electron')
+TER_VER=$(latest_tag 'hashicorp/terraform')
 
 echo "Installing dependencies ..."
 # Youbikey
@@ -11,21 +16,20 @@ sudo add-apt-repository ppa:yubico/stable
 
 # Insync
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-sudo add-apt-repository "deb http://apt.insync.io/ubuntu focal non-free contrib"
+sudo add-apt-repository "deb http://apt.insync.io/ubuntu $(lsb_release -cs) non-free contrib"
 
 # Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 
 sudo apt -qq update
 sudo apt install -yq git \
                          silversearcher-ag \
-                         neovim \
                          zsh \
                          build-essential \
                          cmake \
                          ack-grep \
-                         ctags \
+                         universal-ctags \
                          tmux \
                          docker-ce docker-ce-cli containerd.io \
                          vim vim-gtk3 \
@@ -41,6 +45,10 @@ sudo snap install node --channel=12/stable --classic
 
 echo "Installing Golang ..."
 sudo snap install go --channel=1.15/stable --classic
+
+echo "Installing Simplenote ..."
+wget https://github.com/Automattic/simplenote-electron/releases/download/v${SIMPLENOTE_VER}/Simplenote-linux-${SIMPLENOTE_VER}-amd64.deb -P /tmp
+sudo dpkg -i /tmp/Simplenote-linux-${SIMPLENOTE_VER}-amd64.deb
 
 echo "Installing Terraform ${TER_VER}..."
 wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp

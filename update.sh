@@ -1,8 +1,13 @@
-#!/bin/zsh
+#!/bin/bash
 
-COMPOSE_VER=`curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-FD_VER=`curl -s https://api.github.com/repos/sharkdp/fd/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+function latest_tag () {
+  curl -s https://api.github.com/repos/$1/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'
+}
+
+COMPOSE_VER=$(latest_tag 'docker/compose')
+FD_VER=$(latest_tag 'sharkdp/fd')
+SIMPLENOTE_VER=$(latest_tag 'Automattic/simplenote-electron')
+TER_VER=$(latest_tag 'hashicorp/terraform')
 
 echo "Updating files ..."
 git pull
@@ -30,6 +35,10 @@ sudo dpkg -i /tmp/fd_${FD_VER}_amd64.deb
 echo "Updating Docker Compose ${TER_VER} ..."
 sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+echo "Updating Simplenote ${SIMPLENOTE_VER} ..."
+wget https://github.com/Automattic/simplenote-electron/releases/download/v${SIMPLENOTE_VER}/Simplenote-linux-${SIMPLENOTE_VER}-amd64.deb -P /tmp
+sudo dpkg -i /tmp/Simplenote-linux-${SIMPLENOTE_VER}-amd64.deb
 
 echo "Updating plugins ..."
 vim +PlugClean
