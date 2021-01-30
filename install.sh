@@ -22,6 +22,9 @@ sudo add-apt-repository "deb http://apt.insync.io/ubuntu $(lsb_release -cs) non-
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
+# Vim
+sudo add-apt-repository ppa:jonathonf/vim
+
 sudo apt -qq update
 sudo apt install -yq git \
                          silversearcher-ag \
