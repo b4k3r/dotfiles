@@ -107,6 +107,7 @@ set lazyredraw
 set ttyfast
 set re=1
 
+set timeoutlen=1000 ttimeoutlen=0
 set colorcolumn=120
 
 au BufReadPost *.tex setlocal spell spelllang=pl,en
