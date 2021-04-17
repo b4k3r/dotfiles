@@ -13,15 +13,9 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Add RVM and GO
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/go/bin"
+export PATH="$PATH:/usr/local/go/bin:$HOME/.rvm/bin:$HOME/go/bin"
 
 # Aliases
-alias agi='sudo apt install'
-alias agr='sudo apt --purge autoremove'
-alias agu='sudo apt update'
-alias agug='agu && sudo apt upgrade'
-alias acs='apt-cache search'
-
 alias gt='git status -bs'
 alias gu='git fetch --prune --all -t'
 alias gb='git branch -a'
@@ -38,3 +32,6 @@ alias s='sudo'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# direnv
+eval "$(direnv hook zsh)"

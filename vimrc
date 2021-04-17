@@ -149,6 +149,8 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
+let g:NERDTreeShowHidden=1
+
 " FZF related stuff
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-g>g :Ag<CR>
