@@ -5,60 +5,50 @@ function latest_tag () {
 }
 
 COMPOSE_VER=$(latest_tag 'docker/compose')
-FD_VER=$(latest_tag 'sharkdp/fd')
+GOLANG_VER="1.16.3"
 SIMPLENOTE_VER=$(latest_tag 'Automattic/simplenote-electron')
 TER_VER=$(latest_tag 'hashicorp/terraform')
 
 echo "Installing dependencies ..."
-# Youbikey
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 32CBA1A9
-sudo add-apt-repository ppa:yubico/stable
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf -y install nodejs \
+                    zsh \
+                    vim \
+                    vim-X11 \
+                    cmake \
+                    gcc-c++ \
+                    make \
+                    python3-devel \
+                    the_silver_searcher \
+                    jetbrains-mono-fonts \
+                    direnv \
+                    fd-find \
+                    ack \
+                    tig \
+                    yubioath-desktop \
+                    util-linux-user \
+                    wireshark \
+                    docker-ce docker-ce-cli containerd.io
 
-# Insync
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-sudo add-apt-repository "deb http://apt.insync.io/ubuntu $(lsb_release -cs) non-free contrib"
+sudo usermod -aG docker,wireshark $USER
 
-# Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-# Vim
-sudo add-apt-repository ppa:jonathonf/vim
-
-sudo apt -qq update
-sudo apt install -yq git \
-                         silversearcher-ag \
-                         zsh \
-                         build-essential \
-                         cmake \
-                         ack-grep \
-                         universal-ctags \
-                         tmux \
-                         docker-ce docker-ce-cli containerd.io \
-                         vim vim-gtk3 \
-                         insync \
-                         tig \
-                         yubioath-desktop \
-                         python3-dev \
-                         python3-pip
-sudo usermod -aG docker $USER
-
-echo "Installing Node ..."
-sudo snap install node --channel=12/stable --classic
-
-echo "Installing Golang ..."
-sudo snap install go --channel=1.15/stable --classic
 
 echo "Installing Simplenote ..."
-wget https://github.com/Automattic/simplenote-electron/releases/download/v${SIMPLENOTE_VER}/Simplenote-linux-${SIMPLENOTE_VER}-amd64.deb -P /tmp
-sudo dpkg -i /tmp/Simplenote-linux-${SIMPLENOTE_VER}-amd64.deb
+wget https://github.com/Automattic/simplenote-electron/releases/download/v${SIMPLENOTE_VER}/Simplenote-linux-${SIMPLENOTE_VER}-x86_64.rpm -P /tmp
+sudo dnf -y install /tmp/Simplenote-linux-${SIMPLENOTE_VER}-x86_64.rpm
 
-echo "Installing Terraform ${TER_VER}..."
+echo "Installing Terraform ${TER_VER} ..."
 wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp
 unzip /tmp/terraform_${TER_VER}_linux_amd64.zip
 sudo mv ./terraform /usr/local/bin/
 sudo chmod +x /usr/local/bin/terraform
 sudo rm /tmp/terraform_${TER_VER}_linux_amd64.zip
+
+echo "Installing Golang ${GOLANG_VER} ..."
+wget https://dl.google.com/go/go${GOLANG_VER}.linux-amd64.tar.gz -P /tmp
+sudo tar -C /usr/local -xzf /tmp/go${GOLANG_VER}.linux-amd64.tar.gz
+mkdir -p ~/go
 
 echo "Coping files ..."
 mkdir ~/.fonts
@@ -73,10 +63,6 @@ rm ~/.install.sh ~/.update.sh
 echo "Installin FZF ..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-
-echo "Installin fd finder ${FD_VER} ..."
-wget https://github.com/sharkdp/fd/releases/download/v${FD_VER}/fd_${FD_VER}_amd64.deb -P /tmp
-sudo dpkg -i /tmp/fd_${FD_VER}_amd64.deb
 
 echo "Installing vim-plug ..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
