@@ -49,6 +49,7 @@ echo "Installing Golang ${GOLANG_VER} ..."
 wget https://dl.google.com/go/go${GOLANG_VER}.linux-amd64.tar.gz -P /tmp
 sudo tar -C /usr/local -xzf /tmp/go${GOLANG_VER}.linux-amd64.tar.gz
 mkdir -p ~/go
+export PATH="$PATH:/usr/local/go/bin"
 
 echo "Coping files ..."
 mkdir ~/.fonts
