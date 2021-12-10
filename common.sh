@@ -5,6 +5,5 @@ function latest_tag () {
 }
 
 COMPOSE_VER=$(latest_tag 'docker/compose')
-GOLANG_VER="1.16.7"
-SIMPLENOTE_VER=$(latest_tag 'Automattic/simplenote-electron')
+GOLANG_VER="1.17.4"
 TER_VER=$(latest_tag 'hashicorp/terraform')

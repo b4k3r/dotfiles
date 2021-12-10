@@ -26,10 +26,8 @@ sudo dnf -y install nodejs \
 
 sudo usermod -aG docker,wireshark $USER
 
-
-echo "Installing Simplenote ..."
-wget https://github.com/Automattic/simplenote-electron/releases/download/v${SIMPLENOTE_VER}/Simplenote-linux-${SIMPLENOTE_VER}-x86_64.rpm -P /tmp
-sudo dnf -y install /tmp/Simplenote-linux-${SIMPLENOTE_VER}-x86_64.rpm
+flatpak install flathub com.slack.Slack
+flatpak install flathub com.simplenote.Simplenote
 
 echo "Installing Terraform ${TER_VER} ..."
 wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp

@@ -25,11 +25,6 @@ echo "Updating Docker Compose ${TER_VER} ..."
 sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-echo "Updating Simplenote ${SIMPLENOTE_VER} ..."
-sudo dnf -y remove simplenote
-wget https://github.com/Automattic/simplenote-electron/releases/download/v${SIMPLENOTE_VER}/Simplenote-linux-${SIMPLENOTE_VER}-x86_64.rpm -P /tmp
-sudo dnf -y install /tmp/Simplenote-linux-${SIMPLENOTE_VER}-x86_64.rpm
-
 echo "Updating Golang ${GOLANG_VER} ..."
 sudo rm -rf /usr/local/go
 wget https://dl.google.com/go/go${GOLANG_VER}.linux-amd64.tar.gz -P /tmp
