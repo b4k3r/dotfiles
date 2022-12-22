@@ -34,7 +34,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -62,7 +63,8 @@ set smartcase                   " ... unless they contain at least one capital l
 set t_Co=256
 let g:gruvbox_contrast_dark = "soft"
 set background=dark
-colo gruvbox
+set termguicolors
+colorscheme gruvbox
 
 hi VertSplit ctermbg=NONE guibg=NONE cterm=none
 
@@ -137,16 +139,8 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-
 let g:tex_flavor = 'latex'
 let g:vimtex_quickfix_open_on_warning = 0
-
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1

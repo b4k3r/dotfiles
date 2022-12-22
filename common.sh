@@ -5,5 +5,5 @@ function latest_tag () {
 }
 
 COMPOSE_VER=$(latest_tag 'docker/compose')
-GOLANG_VER="1.17.4"
+GOLANG_PKG=$(curl "https://go.dev/dl/?mode=json" | jq -r '.[0].files[].filename | select(test("go.*.linux-amd64.tar.gz"))')
 TER_VER=$(latest_tag 'hashicorp/terraform')

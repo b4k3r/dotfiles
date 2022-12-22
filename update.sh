@@ -25,13 +25,13 @@ echo "Updating Docker Compose ${TER_VER} ..."
 sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-echo "Updating Golang ${GOLANG_VER} ..."
+echo "Updating Golang ${GOLANG_PKG} ..."
 sudo rm -rf /usr/local/go
-wget https://dl.google.com/go/go${GOLANG_VER}.linux-amd64.tar.gz -P /tmp
-sudo tar -C /usr/local -xzf /tmp/go${GOLANG_VER}.linux-amd64.tar.gz
+wget https://go.dev/dl/${GOLANG_PKG} -P /tmp
+sudo tar -C /usr/local -xzf /tmp/${GOLANG_PKG}
 
 echo "Updating plugins ..."
-vim +PlugClean
-vim +PlugUpdate
+nvim +PlugClean
+nvim +PlugUpdate
 
 echo "Done!"

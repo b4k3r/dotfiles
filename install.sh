@@ -5,10 +5,8 @@ source ./common.sh
 echo "Installing dependencies ..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf -y install nodejs \
-                    zsh \
-                    vim \
-                    vim-X11 \
+sudo dnf -y install zsh \
+                    neovim \
                     cmake \
                     gcc-c++ \
                     make \
@@ -24,10 +22,9 @@ sudo dnf -y install nodejs \
                     wireshark \
                     docker-ce docker-ce-cli containerd.io
 
-sudo usermod -aG docker,wireshark $USER
+sudo dnf module install -y nodejs:18/common
 
-flatpak install flathub com.slack.Slack
-flatpak install flathub com.simplenote.Simplenote
+sudo usermod -aG docker,wireshark $USER
 
 echo "Installing Terraform ${TER_VER} ..."
 wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp
@@ -36,14 +33,15 @@ sudo mv ./terraform /usr/local/bin/
 sudo chmod +x /usr/local/bin/terraform
 sudo rm /tmp/terraform_${TER_VER}_linux_amd64.zip
 
-echo "Installing Golang ${GOLANG_VER} ..."
-wget https://dl.google.com/go/go${GOLANG_VER}.linux-amd64.tar.gz -P /tmp
-sudo tar -C /usr/local -xzf /tmp/go${GOLANG_VER}.linux-amd64.tar.gz
+echo "Installing Golang ${GOLANG_PKG} ..."
+wget https://go.dev/dl/${GOLANG_PKG} -P /tmp
+sudo tar -C /usr/local -xzf /tmp/${GOLANG_PKG}
 mkdir -p ~/go
 export PATH="$PATH:/usr/local/go/bin"
 
 echo "Coping files ..."
 mkdir ~/.fonts
+mkdir -p ~/.config/nvim
 mkdir -p ~/.config/fontconfig/conf.d
 mkdir -p ~/.vim/{swapfiles,backup}
 
@@ -61,15 +59,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Installing plugins ...."
-vim +PlugInstall
+nvim +PlugInstall
 
 echo "Installing Docker Compose ${COMPOSE_VER} ..."
 sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 echo "Installing RVM ..."
-gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://get.rvm.io | bash -s stable --ruby
+gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable
 
 echo "Installing zsh ..."
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
