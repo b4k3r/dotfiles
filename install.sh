@@ -5,6 +5,7 @@ source ./common.sh
 echo "Installing dependencies ..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf -y install zsh \
                     neovim \
                     cmake \
@@ -20,18 +21,12 @@ sudo dnf -y install zsh \
                     yubioath-desktop \
                     util-linux-user \
                     wireshark \
-                    docker-ce docker-ce-cli containerd.io
+                    terraform \
+                    docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 sudo dnf module install -y nodejs:18/common
 
-sudo usermod -aG docker,wireshark $USER
-
-echo "Installing Terraform ${TER_VER} ..."
-wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip -P /tmp
-unzip /tmp/terraform_${TER_VER}_linux_amd64.zip
-sudo mv ./terraform /usr/local/bin/
-sudo chmod +x /usr/local/bin/terraform
-sudo rm /tmp/terraform_${TER_VER}_linux_amd64.zip
+sudo usermod -aG docker,wireshark b4k3r
 
 echo "Installing Golang ${GOLANG_PKG} ..."
 wget https://go.dev/dl/${GOLANG_PKG} -P /tmp
@@ -61,10 +56,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "Installing plugins ...."
 nvim +PlugInstall
 
-echo "Installing Docker Compose ${COMPOSE_VER} ..."
-sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
 echo "Installing RVM ..."
 gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable
@@ -74,5 +65,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 git checkout zshrc
 ln -sf ~/dotfiles/zshrc ~/.zshrc
 chsh -s /bin/zsh
+
+sudo systemctl enable --now docker
 
 echo "Done! Remember to restart the computer."
