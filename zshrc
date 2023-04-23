@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-plugins=(git ruby rvm bundler docker-compose direnv fzf gpg-agent)
+plugins=(git ruby rvm bundler docker-compose direnv fzf gpg-agent direnv)
 
 source $ZSH/oh-my-zsh.sh
 

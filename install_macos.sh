@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Installing Homebrew ..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 echo "Installing dependencies ..."
 brew install cmake \
              ack \
@@ -25,8 +22,7 @@ brew install --cask iterm2 \
                     insync \
                     burp-suite \
                     wireshark \
-                    yubico-authenticator \
-                    bitwarden
+                    yubico-authenticator
 
 echo "Coping files ..."
 mkdir -p ~/.config/nvim
