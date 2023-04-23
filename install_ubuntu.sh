@@ -26,12 +26,14 @@ sudo apt install -yq silversearcher-ag \
                      tig \
                      yubioath-desktop \
                      python3-dev \
-                     python3-pip
+                     python3-pip \
+                     direnv
 
 sudo usermod -aG docker $USER
 
 sudo snap install nvim --classic
 sudo snap install go --classic
+sudo snap install node --classic
 
 echo "Coping files ..."
 mkdir -p ~/.config/nvim
