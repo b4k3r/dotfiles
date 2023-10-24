@@ -1,9 +1,7 @@
 #!/bin/bash
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  source ./common_linux.sh
-
- ./install_ubuntu.sh
+ ./install_fedora.sh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
  ./install_macos.sh
 fi
