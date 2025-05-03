@@ -32,10 +32,10 @@ for item in `git ls-files` ; do
   ln -sf ~/dotfiles/$item ~/.$item
 done
 
-rm ~/.install*.sh ~/.update.sh
+rm -r ~/.install_*.sh ~/.update_*.sh ~/.common.sh
 
 echo "Installing Powerline fonts"
-mkdir /tmp/fonts && git clone git@github.com:powerline/fonts.git /tmp/fonts
+mkdir /tmp/fonts && git clone git@github.com:powerline/fonts.git --depth=1 /tmp/fonts
 cd /tmp/fonts && ./install.sh
 cd ~/dotfiles && rm /tmp/fonts
 
